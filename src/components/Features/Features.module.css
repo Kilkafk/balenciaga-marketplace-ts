@@ -1,0 +1,39 @@
+.features {
+  display: flex;
+  background-color: var(--card-bg);
+  margin: 20px 44px;
+}
+
+.feature {
+  width: 33%;
+  font-size: clamp(8px, 1.2vw, 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  margin: 20px 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.feature:last-child {
+  border-right: 0;
+}
+
+.featureIconWrapper {
+  display: flex;
+  align-items: center;
+  font-size: clamp(20px, 2vw, 32px);
+}
+
+.featureInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+@media (max-width: 650px) {
+  .features {
+    margin: 20px 0;
+  }
+}

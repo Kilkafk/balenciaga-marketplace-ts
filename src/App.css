@@ -1,0 +1,88 @@
+:root {
+  --bg-primary: #0A0A0A;
+  --text-primary: #fff;
+  --card-bg: #1a1a1a;
+  --border-color: #333;
+  --button-bg: #fff;
+  --button-bg-hover: #202020;
+  --button-bg2: rgba(255, 255, 255, 0);;
+  --button-text: black;
+  --button-text2: #fff;
+  --placeholder-color: #888;
+  --hero-bg-text: #181818;
+}
+
+[data-theme='light'] {
+  --bg-primary: #fff;
+  --text-primary: black;
+  --card-bg: #f5f5f5;
+  --border-color: #e0e0e0;
+  --button-bg: black;
+  --button-bg-hover: #e0e0e0;
+  --button-bg2: rgba(255, 255, 255, 0);;
+  --button-text: #fff;
+  --button-text2: black;
+  --placeholder-color: #666;
+  --hero-bg-text: #f0f0f0;
+}
+
+html {
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Bebas Neue' sans-serif;
+  user-select: none;
+}
+
+
+.roboto-condensed {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.productGrid {
+  padding: 0 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.tapeDivider {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 0 44px;
+}
+
+.noProductsFound {
+  grid-column: 2 / 3;
+  width: 100%;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  color: #181818;
+  font-size: 32px;
+}
+
+@media (max-width: 650px) {
+  .tapeDivider, .productGrid {
+    padding: 0;
+  }
+}

@@ -1,0 +1,121 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 0 42px;
+  height: 73px;
+  gap: 5px;
+  font-size: clamp(10px, 1.5vw, 18px);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.logo {
+  display: flex;
+  font-size: clamp(22px, 3vw, 36px);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+
+.nav {
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+.dropdownWrapper {
+  list-style: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdownList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-primary);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1;
+}
+
+.dropdownWrapper:hover .dropdownList {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdownList li {
+  padding: 10px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdownList li:hover {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.logoSearch {
+  display: flex;
+  gap: 10px;
+}
+
+.logoInputSearch {
+  font-family: 'Roboto Condensed', sans-serif;
+  max-width: 70px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: inherit;
+  color: var(--text-primary);
+}
+
+.logoInputSearch::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+}
+
+.logoCartInfo {
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(5px, 1vw, 30px);
+}
+
+.logoItems {
+  max-width: 30%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: clamp(5px, 1vw, 20px);
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.logoItemsTotal,
+.logoItemsPrice {
+  white-space: nowrap;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .nav {
+    justify-content: flex-start;
+  }
+}

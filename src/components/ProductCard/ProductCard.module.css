@@ -1,0 +1,95 @@
+.productCard {
+  max-width: 600px;
+  display: flex;
+  padding: 30px 15px;
+  gap: 2vw;
+  align-items: center;
+  background-color: var(--card-bg);
+  z-index: 1;
+}
+
+.productCardImgWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productCardImgWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: var(--shadow-bottom);
+  left: var(--shadow-left);
+  width: var(--shadow-width);
+  height: var(--shadow-height);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  border-radius: 41%;
+  z-index: -1;
+}
+
+.productCardImg {
+  height: clamp(50px, 6vw, 193px);
+  width: auto;
+}
+
+.productCardCounter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.productCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.productCardTitle {
+  font-size: 14px;
+}
+
+.productCardPrice {
+  font-size: 14px;
+}
+
+.productCardBtns {
+  display: flex;
+  gap: 5px;
+}
+
+.productCardBtn {
+  font-family: 'Roboto Condensed';
+  font-weight: 600;
+  font-size: 12px;
+  background: var(--button-bg);
+  padding: 10px 5%;
+  color: var(--button-text);
+  border: 0;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.productCardBtn:hover {
+  background: var(--button-bg-hover);
+  color: var(--button-text2);
+}
+
+.productCardBtnClear {
+  font-family: 'Roboto Condensed';
+  font-weight: 600;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0);
+  color: var(--button-text2);
+  padding: 10px 10%;
+  border: 1px solid;
+  transition: .5s;
+}
+
+.productCardBtnClear:hover {
+background: var(--button-bg);
+color: var(--button-text);
+cursor: pointer;
+}
