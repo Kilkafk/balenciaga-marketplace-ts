@@ -57,38 +57,31 @@
 
 .productCardBtns {
   display: flex;
-  gap: 5px;
+  border: 1px solid;
+  justify-content: space-between;
 }
 
 .productCardBtn {
-  font-family: 'Roboto Condensed';
-  font-weight: 600;
-  font-size: 12px;
-  background: var(--button-bg);
-  padding: 10px 5%;
-  color: var(--button-text);
-  border: 0;
-  cursor: pointer;
-  transition: .5s;
-}
-
-.productCardBtn:hover {
-  background: var(--button-bg-hover);
-  color: var(--button-text2);
-}
-
-.productCardBtnClear {
+  flex-grow: 1;
   font-family: 'Roboto Condensed';
   font-weight: 600;
   font-size: 12px;
   background: rgba(255, 255, 255, 0);
   color: var(--button-text2);
   padding: 10px 10%;
-  border: 1px solid;
+  border: 0px;
   transition: .5s;
 }
 
-.productCardBtnClear:hover {
+.productCardBtn:first-child {
+  font-size: 20px;
+}
+
+.productCardBtn:last-child {
+  font-size: 16px;
+}
+
+.productCardBtn:hover {
 background: var(--button-bg);
 color: var(--button-text);
 cursor: pointer;
