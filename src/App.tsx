@@ -8,7 +8,7 @@ import Features from './components/Features/Features.tsx'
 import Footer from './components/Footer/Footer.tsx'
 
 interface CartItem {
-  id: number;
+  product_id: number;
   quantity: number;
 }
 
@@ -16,16 +16,25 @@ function App() {
   const [products, setProducts] = useState<Product[]>([])
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:3001/products')
-      const data = await response.json()
+      const response = await fetch('http://localhost:3001/products');
+      const data = await response.json();
       setProducts(data)
     }
     fetchData();
   }, []);
 
+  const [cart, setCart] = useState<CartItem[]>([]);
+useEffect(() => {
+  const fetchData = async () => {
+    const response = await fetch('http://localhost:3001/cart');
+    const data = await response.json();
+    setCart(data);
+  }
+  fetchData();
+}, []);
+
   const [search, setSearch] = useState('');
   const [theme, setTheme] = useState('dark');
-  const [cart, setCart] = useState<CartItem[]>([]);
 
 
 
@@ -62,7 +71,7 @@ function App() {
   const filteredProducts = search ? products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase())) : products;
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
-  const totalPrice = cart.reduce((sum, item) => sum + ((products.find((product) => product.id === item.id)?.price ?? 0) * item.quantity), 0)
+  const totalPrice = cart.reduce((sum, item) => sum + ((products.find((product) => product.id === item.product_id)?.price ?? 0) * item.quantity), 0)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -83,7 +92,7 @@ function App() {
       <div className='productGrid'>
         {filteredProducts.length > 0 ? (
           filteredProducts.map(({ id, price, title, src, shadow }) => {
-            const cartItem = cart.find(item => item.id === id);
+            const cartItem = cart.find(item => item.product_id === id);
             const cartQuantity = cartItem ? cartItem.quantity : 0;
             return <ProductCard
               key={id}
