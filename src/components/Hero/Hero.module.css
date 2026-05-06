@@ -45,6 +45,10 @@ color: var(--button-bg);
   gap: 10px;
 }
 
+.heroActions span {
+  cursor: pointer;
+}
+
 .heroVisual {
   display: flex;
   justify-content: flex-end;
