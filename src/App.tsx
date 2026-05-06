@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { Product } from './types/index.ts'
+import type { Product, CartItem } from './types/index.ts'
 import './App.css'
 import Header from './components/Header/Header.tsx'
 import ProductCard from './components/ProductCard/ProductCard.tsx'
@@ -7,16 +7,13 @@ import Hero from './components/Hero/Hero.tsx'
 import Features from './components/Features/Features.tsx'
 import Footer from './components/Footer/Footer.tsx'
 
-interface CartItem {
-  product_id: number;
-  quantity: number;
-}
+const API_URL = 'https://balenciaga-api.onrender.com';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([])
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:3001/products');
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data)
     }
@@ -26,7 +23,7 @@ function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
 useEffect(() => {
   const fetchData = async () => {
-    const response = await fetch('http://localhost:3001/cart');
+    const response = await fetch(`${API_URL}/cart`);
     const data = await response.json();
     setCart(data);
   }
@@ -39,7 +36,7 @@ useEffect(() => {
 
 
   async function handleAddOne(id: number) {
-    const response = await fetch('http://localhost:3001/cart/add', {
+    const response = await fetch(`${API_URL}/cart/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify( {productId: id} )
@@ -49,7 +46,7 @@ useEffect(() => {
   }
 
   async function handleRemoveOne(id: number) {
-    const response = await fetch('http://localhost:3001/cart/remove', {
+    const response = await fetch(`${API_URL}/cart/remove`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify( {productId: id} )
@@ -59,7 +56,7 @@ useEffect(() => {
   }
   
   async function handleClearBasket(id: number) {
-    const response = await fetch('http://localhost:3001/cart/clear', {
+    const response = await fetch(`${API_URL}/cart/clear`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify( {productId: id} )
