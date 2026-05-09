@@ -7,6 +7,7 @@ import ProductCard from './components/ProductCard/ProductCard.tsx'
 import Hero from './components/Hero/Hero.tsx'
 import Features from './components/Features/Features.tsx'
 import Footer from './components/Footer/Footer.tsx'
+import SkeletonGrid from './components/SkeletonGrid/SkeletonGrid.tsx'
 
 const API_URL = 'https://balenciaga-api.onrender.com';
 
@@ -17,22 +18,25 @@ function App() {
       const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data)
+      setLoading(false);
     }
     fetchData();
   }, []);
 
   const [cart, setCart] = useState<CartItem[]>([]);
-useEffect(() => {
-  const fetchData = async () => {
-    const response = await fetch(`${API_URL}/cart`);
-    const data = await response.json();
-    setCart(data);
-  }
-  fetchData();
-}, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${API_URL}/cart`);
+      const data = await response.json();
+      setCart(data);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const [search, setSearch] = useState('');
   const [theme, setTheme] = useState('dark');
+  const [loading, setLoading] = useState(true);
 
 
 
@@ -40,7 +44,7 @@ useEffect(() => {
     const response = await fetch(`${API_URL}/cart/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( {productId: id} )
+      body: JSON.stringify({ productId: id })
     })
     const data = await response.json();
     setCart(data);
@@ -50,17 +54,17 @@ useEffect(() => {
     const response = await fetch(`${API_URL}/cart/remove`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( {productId: id} )
+      body: JSON.stringify({ productId: id })
     })
     const data = await response.json();
     setCart(data);
   }
-  
+
   async function handleClearBasket(id: number) {
     const response = await fetch(`${API_URL}/cart/clear`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( {productId: id} )
+      body: JSON.stringify({ productId: id })
     })
     const data = await response.json();
     setCart(data);
@@ -74,7 +78,6 @@ useEffect(() => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme])
-
   return (
     <div className="cardContainer">
       <Header
@@ -87,6 +90,7 @@ useEffect(() => {
         theme={theme}
         onThemeChange={setTheme}
       />
+      {loading ? <SkeletonGrid /> : (
       <div className='productGrid'>
         {filteredProducts.length > 0 ? (
           filteredProducts.map(({ id, price, title, src, shadow }) => {
@@ -109,6 +113,7 @@ useEffect(() => {
           <p className='noProductsFound'>No products found...</p>
         )}
       </div>
+      )}
       <Features />
       <img className="tapeDivider" src="/tape.png" alt="" aria-hidden='true' />
       <Footer />

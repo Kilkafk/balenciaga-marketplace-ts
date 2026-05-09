@@ -1,0 +1,25 @@
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeletonGrid {
+  padding: 0 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.skeletonCard {
+  max-width: 600px;
+  display: flex;
+  padding: 30px 15px;
+  gap: 2vw;
+  align-items: center;
+  z-index: 1;
+  background: linear-gradient(90deg, var(--card-bg) 25%, #2a2a2a 50%, var(--card-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+
