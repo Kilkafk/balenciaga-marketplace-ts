@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next'
 import { useState, useEffect } from 'react'
 import type { Product, CartItem } from './types/index.ts'
 import './App.css'
@@ -111,6 +112,7 @@ useEffect(() => {
       <Features />
       <img className="tapeDivider" src="/tape.png" alt="" aria-hidden='true' />
       <Footer />
+      <Analytics />
     </div>
   )
 }
