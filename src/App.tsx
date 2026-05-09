@@ -93,7 +93,7 @@ function App() {
       {loading ? <SkeletonGrid /> : (
       <div className='productGrid'>
         {filteredProducts.length > 0 ? (
-          filteredProducts.map(({ id, price, title, src, shadow }) => {
+          filteredProducts.map(({ id, price, title, src, shadow_bottom, shadow_left, shadow_width, shadow_height }) => {
             const cartItem = cart.find(item => item.product_id === id);
             const cartQuantity = cartItem ? cartItem.quantity : 0;
             return <ProductCard
@@ -106,7 +106,10 @@ function App() {
               onAdd={handleAddOne}
               onRemove={handleRemoveOne}
               onClear={handleClearBasket}
-              shadow={shadow}
+              shadow_bottom={shadow_bottom}
+              shadow_left={shadow_left}
+              shadow_width={shadow_width}
+              shadow_height={shadow_height}
             />
           })
         ) : (

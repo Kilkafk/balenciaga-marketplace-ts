@@ -4,16 +4,12 @@ export interface Product {
   price: number;
   src: string;
   quantity: number;
-  shadow: ShadowProps;
+  shadow_bottom: string;
+  shadow_left: string;
+  shadow_width: string;
+  shadow_height: string;
 }
 export interface CartItem {
   product_id: number;
   quantity: number;
-}
-
-export interface ShadowProps {
-  bottom: string;
-  left: string;
-  width: string;
-  height: string;
 }
