@@ -1,4 +1,4 @@
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 import { useState, useEffect } from 'react'
 import type { Product, CartItem } from './types/index.ts'
 import './App.css'
