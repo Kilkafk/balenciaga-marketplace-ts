@@ -13,7 +13,7 @@ interface ProductCardProps {
   shadow: ShadowProps;
 }
 
-export default function ProductCard({ id, title, price, src, onAdd, onRemove, onClear, shadow }: ProductCardProps) {
+export default function ProductCard({ id, title, price, src, quantity, onAdd, onRemove, onClear, shadow }: ProductCardProps) {
   return (
     <article className={styles.productCard}>
       <div
@@ -35,7 +35,7 @@ export default function ProductCard({ id, title, price, src, onAdd, onRemove, on
         <div className={styles.productCardBtns}>
           <button className={styles.productCardBtn} onClick={() => onRemove(id)}>-</button>
           <button className={styles.productCardBtn} onClick={() => onClear(id)}>REMOVE</button>
-          <button className={styles.productCardBtn} onClick={() => onAdd(id)}>+</button>
+          <button className={styles.productCardBtn} onClick={() => onAdd(id)}>+ ({quantity})</button>
         </div>
       </div>
     </article>
