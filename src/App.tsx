@@ -9,7 +9,7 @@ import Features from './components/Features/Features.tsx'
 import Footer from './components/Footer/Footer.tsx'
 import SkeletonGrid from './components/SkeletonGrid/SkeletonGrid.tsx'
 
-const API_URL = 'https://balenciaga-api.onrender.com';
+const API_URL = 'https://balenciaga-server.onrender.com';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([])
