@@ -31,13 +31,13 @@ export default function ProductCard({ id, title, price, src, quantity, onAdd, on
       </div>
       <div className={styles.productCardCounter}>
         <div className={styles.productCardInfo}>
-          <h3 className={styles.productCardTitle}>{title}</h3>
+          <h3 className={styles.productCardTitle}>{title} {quantity > 0 && <span>({quantity})</span>}</h3>
           <p className={styles.productCardPrice}>{price} €</p>
         </div>
         <div className={styles.productCardBtns}>
           <button className={styles.productCardBtn} onClick={() => onRemove(id)}>-</button>
           <button className={styles.productCardBtn} onClick={() => onClear(id)}>REMOVE</button>
-          <button className={styles.productCardBtn} onClick={() => onAdd(id)}>+ ({quantity})</button>
+          <button className={styles.productCardBtn} onClick={() => onAdd(id)}>+</button>
         </div>
       </div>
     </article>

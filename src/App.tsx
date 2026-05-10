@@ -41,39 +41,42 @@ function App() {
 
 
   async function handleAddOne(id: number) {
-    const response = await fetch(`${API_URL}/cart/add`, {
+    await fetch(`${API_URL}/cart/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ productId: id })
-    })
-    const data = await response.json();
-    setCart(data);
+    });
+    const cartResponse = await fetch(`${API_URL}/cart`);
+    const cartData = await cartResponse.json();
+    setCart(cartData);
   }
 
   async function handleRemoveOne(id: number) {
-    const response = await fetch(`${API_URL}/cart/remove`, {
+    await fetch(`${API_URL}/cart/remove`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ productId: id })
     })
-    const data = await response.json();
-    setCart(data);
+    const cartResponse = await fetch(`${API_URL}/cart`);
+    const cartData = await cartResponse.json();
+    setCart(cartData);
   }
 
   async function handleClearBasket(id: number) {
-    const response = await fetch(`${API_URL}/cart/clear`, {
+    await fetch(`${API_URL}/cart/clear`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ productId: id })
     })
-    const data = await response.json();
-    setCart(data);
+    const cartResponse = await fetch(`${API_URL}/cart`);
+    const cartData = await cartResponse.json();
+    setCart(cartData);
   }
 
   const filteredProducts = search ? products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase())) : products;
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
-  const totalPrice = cart.reduce((sum, item) => sum + ((products.find((product) => product.id === item.product_id)?.price ?? 0) * item.quantity), 0)
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + ((products.find((product) => product.id === item.product_id)?.price ?? 0) * item.quantity), 0);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
